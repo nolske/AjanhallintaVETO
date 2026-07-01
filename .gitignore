@@ -141,3 +141,15 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# macOS
+.DS_Store
+
+# Vercel
+.vercel
+
+# Local environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
