@@ -11,7 +11,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 text-sm text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
           <p>AjanhallintaVETO MVP</p>
           <Link className="font-medium text-[var(--accent)]" href="/reports">
-            Reports
+            Raportit
           </Link>
         </div>
       </footer>

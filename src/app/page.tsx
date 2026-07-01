@@ -2,10 +2,10 @@ import Link from "next/link";
 import { ECTS_MINUTES, minutesToEcts } from "@/lib/calculations/ects";
 
 const highlights = [
-  "Track study project work as integer minutes.",
-  "Share projects with registered members.",
-  "Report hours and calculated ECTS credits.",
-  "Keep authorization enforced by Supabase RLS."
+  "Kirjaa opiskeluprojektien aika kokonaisina minuutteina.",
+  "Jaa projektit rekisteroityjen jasenten kanssa.",
+  "Raportoi tunnit ja lasketut ECTS-pisteet.",
+  "Pidä oikeudet Supabase RLS -saantojen takana."
 ];
 
 export default function HomePage() {
@@ -13,15 +13,15 @@ export default function HomePage() {
     <section className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-12 sm:py-16">
       <div className="max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">
-          Study time management MVP
+          Opiskelun ajanseurannan MVP
         </p>
         <h1 className="mt-3 text-4xl font-bold tracking-normal text-[var(--foreground)] sm:text-5xl">
           AjanhallintaVETO
         </h1>
         <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
-          A focused web application for logging study project hours, managing
-          shared project membership, and calculating ECTS credits from approved
-          time entries.
+          Selkea verkkosovellus opiskeluprojektien tuntien kirjaamiseen,
+          projektijasenten hallintaan ja ECTS-pisteiden laskemiseen kirjatuista
+          minuuteista.
         </p>
       </div>
 
@@ -39,10 +39,10 @@ export default function HomePage() {
       </div>
 
       <div className="rounded-lg border border-[var(--border)] bg-[var(--panel)] p-6 shadow-sm">
-        <h2 className="text-xl font-semibold">ECTS calculation</h2>
+        <h2 className="text-xl font-semibold">ECTS-laskenta</h2>
         <p className="mt-3 text-[var(--muted)]">
-          One ECTS credit equals {ECTS_MINUTES.toLocaleString("en-US")} minutes.
-          For example, 810 minutes is {minutesToEcts(810)} ECTS credits.
+          Yksi ECTS-piste on {ECTS_MINUTES.toLocaleString("fi-FI")} minuuttia.
+          Esimerkiksi 810 minuuttia on {minutesToEcts(810)} ECTS-pistetta.
         </p>
       </div>
 
@@ -51,7 +51,7 @@ export default function HomePage() {
           className="inline-flex min-h-11 items-center justify-center rounded-md bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)]"
           href="/dashboard"
         >
-          View app shell
+          Siirry koontiin
         </Link>
       </div>
     </section>
