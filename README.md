@@ -25,7 +25,8 @@ Create a local environment file:
 cp .env.example .env.local
 ```
 
-Fill in the public Supabase values in `.env.local`, then run the development server:
+Fill in the public Supabase values and `NEXT_PUBLIC_SITE_URL` in `.env.local`,
+then run the development server:
 
 ```bash
 npm run dev
@@ -38,6 +39,7 @@ Open `http://localhost:3000`.
 ```bash
 npm run lint
 npm run typecheck
+npm test
 npm run build
 ```
 

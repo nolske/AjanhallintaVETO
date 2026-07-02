@@ -16,6 +16,7 @@ const errorMessages = {
   time_entry_invalid: "Tarkista tuntikirjauksen tiedot.",
   time_entry_save_failed: "Tuntikirjauksen tallennus ei onnistunut.",
   time_entry_delete_failed: "Tuntikirjauksen poistaminen ei onnistunut.",
+  too_many_requests: "Liian monta yritysta. Odota hetki ja yrita uudelleen.",
   unexpected: "Tapahtui odottamaton virhe. Yrita uudelleen."
 } as const;
 

@@ -166,6 +166,25 @@ Important fix made:
 
 - Project creation originally showed `Projektin tallennus ei onnistunut`.
 - Likely causes were missing `profiles` rows and/or RLS friction from `insert(...).select("id").single()`.
+
+## Administrator Area
+
+- Added a minimal `/admin` dashboard.
+- Access is checked on the server from the trusted `public.profiles.role` value.
+- Normal users do not see the admin navigation link and cannot access `/admin`.
+- Admins can see counts for users, active projects, archived projects, and time entries.
+- Admins can inspect basic user profile rows and project metadata.
+- The admin page does not expose passwords, Auth tokens, private credentials, service-role keys, or user impersonation.
+- The admin page does not allow editing another user's hours.
+- First admin creation is manual through Supabase SQL:
+
+```sql
+update public.profiles
+set role = 'admin'
+where email = 'admin@example.com';
+```
+
+- This SQL must never be exposed as a public endpoint or browser feature.
 - Fixed by:
   - Adding `ensure_current_profile()`.
   - Calling it before project creation.

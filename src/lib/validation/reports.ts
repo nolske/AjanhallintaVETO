@@ -1,11 +1,24 @@
 import { z } from "zod";
-import { idSchema } from "@/lib/validation/common";
+import { idSchema } from "./common.ts";
+
+const optionalDateSchema = z
+  .string()
+  .optional()
+  .transform((value) => (value && value.length > 0 ? value : undefined))
+  .pipe(z.iso.date().optional());
+
+const optionalProjectIdSchema = z
+  .string()
+  .optional()
+  .transform((value) => (value && value.length > 0 ? value : undefined))
+  .pipe(idSchema.optional());
 
 export const reportFilterSchema = z
   .object({
-    projectId: idSchema.optional(),
-    startDate: z.iso.date().optional(),
-    endDate: z.iso.date().optional()
+    projectId: optionalProjectIdSchema,
+    startDate: optionalDateSchema,
+    endDate: optionalDateSchema,
+    projectStatus: z.enum(["all", "active", "archived"]).default("all")
   })
   .refine(
     (value) =>
@@ -17,3 +30,5 @@ export const reportFilterSchema = z
       path: ["startDate"]
     }
   );
+
+export type ReportFilters = z.infer<typeof reportFilterSchema>;

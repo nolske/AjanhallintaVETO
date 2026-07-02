@@ -1,8 +1,13 @@
 "use server";
 
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getSafeRedirectPath, withStatus } from "@/lib/auth/redirects";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import {
+  checkRateLimit,
+  createRateLimitKey
+} from "@/lib/security/rate-limit";
 import {
   addProjectMemberSchema,
   projectFormSchema,
@@ -13,6 +18,18 @@ import {
 function getString(formData: FormData, key: string) {
   const value = formData.get(key);
   return typeof value === "string" ? value : "";
+}
+
+const memberInviteRateLimit = {
+  limit: 10,
+  windowMs: 60 * 60 * 1000
+};
+
+async function getClientFingerprint() {
+  const headerStore = await headers();
+  const forwardedFor = headerStore.get("x-forwarded-for")?.split(",")[0]?.trim();
+
+  return forwardedFor || headerStore.get("x-real-ip") || "unknown";
 }
 
 async function requireActionUser() {
@@ -154,13 +171,26 @@ export async function addProjectMemberAction(formData: FormData) {
     redirect(withStatus("/projects", "error", "member_invalid"));
   }
 
-  const { supabase } = await requireProjectOwner(parsed.data.projectId);
+  const { supabase, user } = await requireProjectOwner(parsed.data.projectId);
+  const fingerprint = await getClientFingerprint();
+  const rateLimit = checkRateLimit(
+    createRateLimitKey("memberInvite", [
+      user.id,
+      parsed.data.projectId,
+      fingerprint
+    ]),
+    memberInviteRateLimit
+  );
+  const path = `/projects/${parsed.data.projectId}/members`;
+
+  if (!rateLimit.allowed) {
+    redirect(withStatus(path, "error", "too_many_requests"));
+  }
+
   const { data, error } = await supabase.rpc("add_project_member_by_email", {
     p_project_id: parsed.data.projectId,
     p_email: parsed.data.email
   });
-
-  const path = `/projects/${parsed.data.projectId}/members`;
 
   if (error || data === "not_allowed" || data === "not_found") {
     redirect(withStatus(path, "error", "member_add_failed"));

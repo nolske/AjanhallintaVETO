@@ -2,7 +2,14 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { publicEnv } from "@/lib/env";
+import { buildSiteUrl } from "@/lib/auth/urls";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import {
+  checkRateLimit,
+  createRateLimitKey,
+  type RateLimitConfig
+} from "@/lib/security/rate-limit";
 import {
   forgotPasswordSchema,
   loginSchema,
@@ -17,17 +24,31 @@ function getString(formData: FormData, key: string) {
   return typeof value === "string" ? value : "";
 }
 
-async function getRequestOrigin() {
+const authRateLimits = {
+  login: { limit: 10, windowMs: 15 * 60 * 1000 },
+  register: { limit: 5, windowMs: 60 * 60 * 1000 },
+  forgotPassword: { limit: 5, windowMs: 60 * 60 * 1000 }
+} satisfies Record<string, RateLimitConfig>;
+
+async function getClientFingerprint() {
   const headerStore = await headers();
-  const origin = headerStore.get("origin");
+  const forwardedFor = headerStore.get("x-forwarded-for")?.split(",")[0]?.trim();
 
-  if (origin) {
-    return origin;
+  return forwardedFor || headerStore.get("x-real-ip") || "unknown";
+}
+
+async function enforceAuthRateLimit(
+  scope: keyof typeof authRateLimits,
+  email: string,
+  redirectPath: string
+) {
+  const fingerprint = await getClientFingerprint();
+  const key = createRateLimitKey(scope, [email, fingerprint]);
+  const result = checkRateLimit(key, authRateLimits[scope]);
+
+  if (!result.allowed) {
+    redirect(withStatus(redirectPath, "error", "too_many_requests"));
   }
-
-  const host = headerStore.get("host") ?? "localhost:3000";
-  const protocol = host.startsWith("localhost") ? "http" : "https";
-  return `${protocol}://${host}`;
 }
 
 export async function registerAction(formData: FormData) {
@@ -42,13 +63,17 @@ export async function registerAction(formData: FormData) {
     redirect(withStatus("/register", "error", "invalid_form"));
   }
 
-  const origin = await getRequestOrigin();
+  await enforceAuthRateLimit("register", parsed.data.email, "/register");
+
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
     options: {
-      emailRedirectTo: `${origin}/auth/callback?next=/dashboard`,
+      emailRedirectTo: buildSiteUrl(
+        publicEnv.NEXT_PUBLIC_SITE_URL,
+        "/auth/callback?next=/dashboard"
+      ),
       data: {
         display_name: parsed.data.displayName
       }
@@ -74,6 +99,12 @@ export async function loginAction(formData: FormData) {
     redirect(withStatus(`/login?next=${encodeURIComponent(next)}`, "error", "invalid_form"));
   }
 
+  await enforceAuthRateLimit(
+    "login",
+    parsed.data.email,
+    `/login?next=${encodeURIComponent(next)}`
+  );
+
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase.auth.signInWithPassword({
     email: parsed.data.email,
@@ -98,11 +129,19 @@ export async function forgotPasswordAction(formData: FormData) {
     redirect(withStatus("/forgot-password", "error", "invalid_form"));
   }
 
-  const origin = await getRequestOrigin();
+  await enforceAuthRateLimit(
+    "forgotPassword",
+    parsed.data.email,
+    "/forgot-password"
+  );
+
   const supabase = await createSupabaseServerClient();
 
   await supabase.auth.resetPasswordForEmail(parsed.data.email, {
-    redirectTo: `${origin}/auth/callback?next=/reset-password`
+    redirectTo: buildSiteUrl(
+      publicEnv.NEXT_PUBLIC_SITE_URL,
+      "/auth/callback?next=/reset-password"
+    )
   });
 
   redirect(withStatus("/forgot-password", "status", "reset_email_sent"));

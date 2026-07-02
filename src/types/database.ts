@@ -294,6 +294,25 @@ export type Database = {
           updated_at: string;
         }[];
       };
+      get_my_report_entries: {
+        Args: {
+          p_start_date?: string | null;
+          p_end_date?: string | null;
+          p_project_id?: string | null;
+          p_project_status?: "active" | "archived" | "all" | null;
+        };
+        Returns: {
+          entry_id: string;
+          project_id: string;
+          project_name: string;
+          project_status: "active" | "archived";
+          entry_date: string;
+          duration_minutes: number;
+          description: string | null;
+          created_at: string;
+          updated_at: string;
+        }[];
+      };
     };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;

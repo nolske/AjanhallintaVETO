@@ -22,9 +22,13 @@ Fill in only the public values:
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_PUBLIC_ANON_OR_PUBLISHABLE_KEY
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-Find these values in Supabase under project API settings.
+Find the Supabase values under project API settings. `NEXT_PUBLIC_SITE_URL`
+must be the canonical application URL used in Supabase email confirmation and
+password reset links. Use `http://localhost:3000` for local development and the
+real Vercel/app URL for deployment.
 
 Do not add a service-role key at this stage. Never commit `.env.local`.
 
@@ -89,6 +93,14 @@ where email = 'admin@example.com';
 
 Use the real admin email for the development project. Do not put that email or any credentials into the repository.
 
+This manual SQL procedure is only for a controlled development or support
+environment. Do not expose role changes through a public route, form, server
+action, or API endpoint.
+
+To test safely, keep one normal account with `role = 'user'` and one admin
+account with `role = 'admin'`. The normal user should not be able to open
+`/admin`; the admin user should be able to view the administrator dashboard.
+
 ## 8. Verify Locally
 
 Run:
@@ -96,6 +108,7 @@ Run:
 ```bash
 npm run lint
 npm run typecheck
+npm test
 npm run build
 ```
 
@@ -105,4 +118,5 @@ Then start the app:
 npm run dev
 ```
 
-Authentication screens are not implemented yet, so database-backed user flows will come in a later phase.
+Authentication, project, time-entry, report, and admin MVP flows are now
+implemented. Keep `.env.local` local only.

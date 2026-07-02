@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { signOutAction } from "@/lib/auth/actions";
-import { getAuthenticatedUser } from "@/lib/auth/server";
+import { canAccessAdminArea } from "@/lib/admin/authz";
+import { getAuthenticatedUser, getCurrentProfile } from "@/lib/auth/server";
 
 const navigation = [
   { href: "/dashboard", label: "Koonti" },
@@ -13,6 +14,10 @@ const navigation = [
 
 export async function Header() {
   const user = await getAuthenticatedUser();
+  const profile = user ? await getCurrentProfile(user.id) : null;
+  const visibleNavigation = navigation.filter(
+    (item) => item.href !== "/admin" || canAccessAdminArea(profile?.role)
+  );
 
   return (
     <header className="border-b border-[var(--border)] bg-[var(--panel)]">
@@ -26,7 +31,7 @@ export async function Header() {
         </Link>
         <nav aria-label="Paavalikko">
           <ul className="flex flex-wrap gap-2">
-            {navigation.map((item) => (
+            {visibleNavigation.map((item) => (
               <li key={item.href}>
                 <Link
                   className="inline-flex min-h-10 items-center rounded-md px-3 py-2 text-sm font-medium text-[var(--muted)] transition hover:bg-[#eef5f3] hover:text-[var(--accent)]"

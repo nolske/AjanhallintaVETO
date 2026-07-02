@@ -161,6 +161,8 @@ Projects:
 - Authenticated users can create projects only with themselves as owner.
 - The owner membership is created by trigger.
 - Owners can update or archive their projects.
+- Admins can read project metadata for support, but the MVP admin scope is
+  read-only for project updates.
 
 Project members:
 
@@ -168,6 +170,8 @@ Project members:
 - Owners can add or remove normal members.
 - Members cannot add themselves to arbitrary projects.
 - Owner membership cannot be removed through normal member removal.
+- Admins can read membership metadata for support, but project membership
+  changes remain owner actions.
 
 Time entries:
 
@@ -175,6 +179,8 @@ Time entries:
 - Project owners can read entries for their projects.
 - Users can insert entries only for themselves and only into active projects where they are members.
 - Users can update or delete only their own entries.
+- Admins can read time-entry metadata through RLS for support oversight, but
+  cannot update or delete another user's time entries through normal policies.
 
 ## Indexes
 

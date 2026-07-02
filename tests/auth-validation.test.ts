@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { getSafeRedirectPath } from "../src/lib/auth/redirects.ts";
+import { buildSiteUrl } from "../src/lib/auth/urls.ts";
 import {
   forgotPasswordSchema,
   loginSchema,
@@ -77,5 +78,14 @@ describe("safe redirect paths", () => {
     assert.equal(getSafeRedirectPath("//example.com"), "/dashboard");
     assert.equal(getSafeRedirectPath("/login"), "/dashboard");
     assert.equal(getSafeRedirectPath(null), "/dashboard");
+  });
+});
+
+describe("site URL helpers", () => {
+  it("builds auth redirect URLs from configured site URL", () => {
+    assert.equal(
+      buildSiteUrl("https://app.example.com/", "/auth/callback?next=/dashboard"),
+      "https://app.example.com/auth/callback?next=/dashboard"
+    );
   });
 });
