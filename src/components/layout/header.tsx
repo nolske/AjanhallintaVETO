@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import appIcon from "@/app/icon.png";
 import { signOutAction } from "@/lib/auth/actions";
 import { canAccessAdminArea } from "@/lib/admin/authz";
 import { getAuthenticatedUser, getCurrentProfile } from "@/lib/auth/server";
@@ -22,20 +20,16 @@ export async function Header() {
   );
 
   return (
-    <header className="border-b border-[var(--border)] bg-[#4E008E]/50">
+    <header
+      className="border-b border-[var(--border)]"
+      style={{ backgroundColor: "rgb(78 0 142 / 50%)" }}
+    >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-5 lg:flex-row lg:items-center lg:justify-between">
         <Link
-          className="inline-flex items-center gap-2 text-lg font-bold text-[var(--foreground)]"
+          className="text-lg font-bold text-[var(--foreground)]"
           href="/"
           aria-label="AjanhallintaVETO home"
         >
-          <Image
-            alt=""
-            aria-hidden="true"
-            className="h-12 w-12 rounded-sm object-contain"
-            priority
-            src={appIcon}
-          />
           AjanhallintaVETO
         </Link>
         <nav aria-label="Paavalikko">
