@@ -66,13 +66,13 @@ export default async function ProjectSettingsPage({
           {project.status === "active" ? "Arkistoi projekti" : "Palauta projekti"}
         </h2>
         <p className="mt-3 leading-7 text-[var(--muted)]">
-          Projektia ei poisteta pysyvasti MVP-versiossa.
+          Projektia ei poisteta pysyvästi MVP-versiossa.
         </p>
         <form action={setProjectArchivedAction} className="mt-5">
           <input name="projectId" type="hidden" value={projectId} />
           <input name="status" type="hidden" value={archiveTarget} />
           <input name="next" type="hidden" value={next} />
-          <SubmitButton pendingText="Paivitetaan...">
+          <SubmitButton pendingText="Päivitetään...">
             {project.status === "active" ? "Arkistoi projekti" : "Palauta aktiiviseksi"}
           </SubmitButton>
         </form>

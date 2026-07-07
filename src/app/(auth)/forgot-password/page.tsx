@@ -17,7 +17,7 @@ export default async function ForgotPasswordPage({
   return (
     <AuthCard
       title="Vaihda unohtunut salasana"
-      description="Anna sahkopostiosoite. Jos tili loytyy, saat linkin salasanan vaihtamiseen."
+      description="Anna sähköpostiosoite. Jos tili löytyy, saat linkin salasanan vaihtamiseen."
       footerHref="/login"
       footerLabel="Takaisin kirjautumiseen."
     >
@@ -25,7 +25,7 @@ export default async function ForgotPasswordPage({
         <AuthMessage error={params.error} status={params.status} />
         <div className="flex flex-col gap-2">
           <label className="text-sm font-semibold" htmlFor="email">
-            Sahkoposti
+            Sähköposti
           </label>
           <input
             autoComplete="email"
@@ -36,7 +36,7 @@ export default async function ForgotPasswordPage({
             type="email"
           />
         </div>
-        <SubmitButton pendingText="Lahetetaan...">Laheta vaihtolinkki</SubmitButton>
+        <SubmitButton pendingText="Lähetetään...">Lähetä vaihtolinkki</SubmitButton>
       </form>
     </AuthCard>
   );

@@ -3,9 +3,9 @@ import { ECTS_MINUTES, minutesToEcts } from "@/lib/calculations/ects";
 
 const highlights = [
   "Kirjaa opiskeluprojektien aika kokonaisina minuutteina.",
-  "Jaa projektit rekisteroityjen jasenten kanssa.",
+  "Jaa projektit rekisteröityjen jäsenten kanssa.",
   "Raportoi tunnit ja lasketut ECTS-pisteet.",
-  "Pidä oikeudet Supabase RLS -saantojen takana."
+  "Pidä oikeudet Supabase RLS -sääntöjen takana."
 ];
 
 export default function HomePage() {
@@ -19,8 +19,8 @@ export default function HomePage() {
           AjanhallintaVETO
         </h1>
         <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
-          Selkea verkkosovellus opiskeluprojektien tuntien kirjaamiseen,
-          projektijasenten hallintaan ja ECTS-pisteiden laskemiseen kirjatuista
+          Selkeä verkkosovellus opiskeluprojektien tuntien kirjaamiseen,
+          projektijäsenten hallintaan ja ECTS-pisteiden laskemiseen kirjatuista
           minuuteista.
         </p>
       </div>

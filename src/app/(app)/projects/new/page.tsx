@@ -20,7 +20,7 @@ export default async function NewProjectPage({ searchParams }: NewProjectPagePro
         </Link>
         <h1 className="mt-4 text-3xl font-bold">Uusi projekti</h1>
         <p className="mt-3 leading-7 text-[var(--muted)]">
-          Sinusta tulee projektin omistaja. Omistajan jasenyys luodaan
+          Sinusta tulee projektin omistaja. Omistajan jäsenyys luodaan
           tietokannassa samassa tapahtumassa projektin kanssa.
         </p>
       </div>

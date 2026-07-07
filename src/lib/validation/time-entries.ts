@@ -14,18 +14,18 @@ const integerFieldSchema = z.coerce
 export const timeEntryDescriptionSchema = z
   .string()
   .trim()
-  .max(500, "Kuvaus on liian pitka.")
+  .max(500, "Kuvaus on liian pitkä.")
   .transform((value) => (value.length > 0 ? value : null));
 
 export const timeEntryFormSchema = z
   .object({
     projectId: idSchema,
     entryDate: z
-      .iso.date("Anna kelvollinen paivamaara.")
+      .iso.date("Anna kelvollinen päivämäärä.")
       .refine((value) => !isFutureDate(value), {
-        message: "Tulevaisuuden paivamaaria ei sallita."
+        message: "Tulevaisuuden päivämääriä ei sallita."
       }),
-    hours: integerFieldSchema.max(24, "Tunnit voivat olla enintaan 24."),
+    hours: integerFieldSchema.max(24, "Tunnit voivat olla enintään 24."),
     minutes: integerFieldSchema.max(59, "Minuutit voivat olla 0-59."),
     description: timeEntryDescriptionSchema
   })

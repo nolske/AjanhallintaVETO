@@ -28,7 +28,7 @@ export function HeaderNavigation({ items, isSignedIn }: HeaderNavigationProps) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Paavalikko">
+    <nav aria-label="Päävalikko">
       <ul className="flex flex-wrap gap-2">
         {items.map((item) => {
           const isActive = isActivePath(pathname, item.href);

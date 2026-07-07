@@ -33,7 +33,7 @@ export default async function NewTimeEntryPage({ searchParams }: NewTimeEntryPag
       <AuthMessage error={params.error} status={params.status} />
       {activeProjects.length === 0 ? (
         <div className="rounded-lg border border-dashed border-[var(--border)] bg-[var(--panel)] p-6 text-[var(--muted)]">
-          Sinulla ei ole aktiivisia projekteja, joihin voisi lisata kirjauksia.
+          Sinulla ei ole aktiivisia projekteja, joihin voisi lisätä kirjauksia.
         </div>
       ) : (
         <div className="rounded-lg border border-[var(--border)] bg-[var(--panel)] p-6 shadow-sm">

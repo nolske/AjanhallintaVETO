@@ -24,19 +24,19 @@ export default async function DashboardPage() {
     <section className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-12">
       <div>
         <p className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">
-          Kirjautunut kayttaja
+          Kirjautunut käyttäjä
         </p>
         <h1 className="mt-3 text-3xl font-bold">Koonti</h1>
         <p className="mt-3 leading-7 text-[var(--muted)]">
-          Olet kirjautunut osoitteella {user.email}. Tassa on yhteenveto omista
+          Olet kirjautunut osoitteella {user.email}. Tässä on yhteenveto omista
           kirjauksistasi ja aktiivisista projekteistasi.
         </p>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Metric title="Minuutit yhteensa" value={String(summary.totalMinutes)} />
-        <Metric title="Tunnit yhteensa" value={summary.formattedHours} />
-        <Metric title="ECTS yhteensa" value={`${summary.ects} ECTS`} />
-        <Metric title="Tassa kuussa" value={formatDuration(currentMonthMinutes)} />
+        <Metric title="Minuutit yhteensä" value={String(summary.totalMinutes)} />
+        <Metric title="Tunnit yhteensä" value={summary.formattedHours} />
+        <Metric title="ECTS yhteensä" value={`${summary.ects} ECTS`} />
+        <Metric title="Tässä kuussa" value={formatDuration(currentMonthMinutes)} />
       </div>
       <div className="flex flex-wrap gap-3">
         <Link
@@ -49,7 +49,7 @@ export default async function DashboardPage() {
           className="primary-button inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-sm font-semibold transition"
           href="/time-entries/new"
         >
-          Lisaa tuntikirjaus
+          Lisää tuntikirjaus
         </Link>
       </div>
       <div className="grid gap-6 lg:grid-cols-2">
@@ -79,7 +79,7 @@ export default async function DashboardPage() {
             </ul>
           ) : (
             <p className="mt-4 rounded-lg border border-dashed border-[var(--border)] p-5 text-[var(--muted)]">
-              Aktiivisia projekteja ei viela ole.
+              Aktiivisia projekteja ei vielä ole.
             </p>
           )}
         </section>
@@ -106,7 +106,7 @@ export default async function DashboardPage() {
             </ul>
           ) : (
             <p className="mt-4 rounded-lg border border-dashed border-[var(--border)] p-5 text-[var(--muted)]">
-              Tuntikirjauksia ei viela ole.
+              Tuntikirjauksia ei vielä ole.
             </p>
           )}
         </section>

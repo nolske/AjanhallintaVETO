@@ -43,10 +43,10 @@ export default async function ProjectMembersPage({
         >
           Takaisin projektiin
         </Link>
-        <h1 className="mt-4 text-3xl font-bold">Jasenet</h1>
+        <h1 className="mt-4 text-3xl font-bold">Jäsenet</h1>
         <p className="mt-3 leading-7 text-[var(--muted)]">
-          Lisaa olemassa oleva rekisteroity kayttaja sahkopostiosoitteella.
-          Kayttajahakua ei nayteta julkisesti.
+          Lisää olemassa oleva rekisteröity käyttäjä sähköpostiosoitteella.
+          Käyttäjähakua ei näytetä julkisesti.
         </p>
       </div>
       <AuthMessage error={query.error} status={query.status} />
@@ -55,7 +55,7 @@ export default async function ProjectMembersPage({
           <input name="projectId" type="hidden" value={projectId} />
           <div className="flex flex-1 flex-col gap-2">
             <label className="text-sm font-semibold" htmlFor="email">
-              Uuden jasenen sahkoposti
+              Uuden jäsenen sähköposti
             </label>
             <input
               autoComplete="email"
@@ -66,11 +66,11 @@ export default async function ProjectMembersPage({
               type="email"
             />
           </div>
-          <SubmitButton pendingText="Lisataan...">Lisaa jasen</SubmitButton>
+          <SubmitButton pendingText="Lisätään...">Lisää jäsen</SubmitButton>
         </form>
       </div>
       <div className="rounded-lg border border-[var(--border)] bg-[var(--panel)] p-6 shadow-sm">
-        <h2 className="text-xl font-semibold">Nykyiset jasenet</h2>
+        <h2 className="text-xl font-semibold">Nykyiset jäsenet</h2>
         <ul className="mt-4 divide-y divide-[var(--border)]">
           {members.map((member) => (
             <li
@@ -81,7 +81,7 @@ export default async function ProjectMembersPage({
                 <p className="font-medium">{member.display_name || member.email}</p>
                 <p className="text-sm text-[var(--muted)]">{member.email}</p>
                 <p className="mt-1 text-sm font-semibold text-[var(--muted)]">
-                  {member.role === "owner" ? "Omistaja" : "Jasen"}
+                  {member.role === "owner" ? "Omistaja" : "Jäsen"}
                 </p>
               </div>
               {canRemoveProjectMember(project.user_role, member.role) ? (

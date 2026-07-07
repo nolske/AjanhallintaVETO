@@ -18,8 +18,8 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
   return (
     <AuthCard
-      title="Kirjaudu sisaan"
-      description="Kirjaudu omalla sahkopostiosoitteellasi ja salasanallasi."
+      title="Kirjaudu sisään"
+      description="Kirjaudu omalla sähköpostiosoitteellasi ja salasanallasi."
       footerHref="/register"
       footerLabel="Ei tiliä? Luo uusi tili."
     >
@@ -28,7 +28,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         <input name="next" type="hidden" value={next} />
         <div className="flex flex-col gap-2">
           <label className="text-sm font-semibold" htmlFor="email">
-            Sahkoposti
+            Sähköposti
           </label>
           <input
             autoComplete="email"

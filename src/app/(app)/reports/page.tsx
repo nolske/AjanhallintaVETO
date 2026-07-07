@@ -33,7 +33,7 @@ export default async function ReportsPage({ searchParams }: ReportsPageProps) {
         <div>
           <h1 className="text-3xl font-bold">Raportit</h1>
           <p className="mt-3 max-w-3xl leading-7 text-[var(--muted)]">
-            Raportti nayttaa vain omat tuntikirjauksesi. ECTS lasketaan
+            Raportti näyttää vain omat tuntikirjauksesi. ECTS lasketaan
             yhteenlasketuista minuuteista.
           </p>
         </div>
@@ -46,7 +46,7 @@ export default async function ReportsPage({ searchParams }: ReportsPageProps) {
       </div>
       {!valid ? (
         <p className="rounded-md border border-[#f1b7b7] bg-[#fff2f2] px-4 py-3 text-sm font-medium text-[#8a1f1f]">
-          Suodattimet eivat olleet kelvollisia, joten naytetaan koko raportti.
+          Suodattimet eivät olleet kelvollisia, joten näytetään koko raportti.
         </p>
       ) : null}
       <form className="grid gap-4 rounded-lg border border-[var(--border)] bg-[var(--panel)] p-5 shadow-sm md:grid-cols-5">
@@ -64,7 +64,7 @@ export default async function ReportsPage({ searchParams }: ReportsPageProps) {
         </div>
         <div className="flex flex-col gap-2">
           <label className="text-sm font-semibold" htmlFor="endDate">
-            Paattyen
+            Päättyen
           </label>
           <input
             className="min-h-11 rounded-md border border-[var(--border)] bg-white px-3 py-2"
@@ -155,7 +155,7 @@ export default async function ReportsPage({ searchParams }: ReportsPageProps) {
             </ul>
           </div>
         ) : (
-          <Empty text="Raporttiin ei loytynyt projektikohtaisia kirjauksia." />
+          <Empty text="Raporttiin ei löytynyt projektikohtaisia kirjauksia." />
         )}
       </section>
       <section className="flex flex-col gap-4">
@@ -194,7 +194,7 @@ export default async function ReportsPage({ searchParams }: ReportsPageProps) {
             </ul>
           </div>
         ) : (
-          <Empty text="Valituilla suodattimilla ei loytynyt kirjauksia." />
+          <Empty text="Valituilla suodattimilla ei löytynyt kirjauksia." />
         )}
       </section>
     </section>

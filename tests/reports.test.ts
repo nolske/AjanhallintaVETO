@@ -108,7 +108,7 @@ describe("CSV export", () => {
     const csv = buildReportCsv(entries);
 
     assert.equal(csv.startsWith("\uFEFF"), true);
-    assert.match(csv, /"Paivamaara","Projekti","Kuvaus","Minuutit","Kesto","ECTS"/);
+    assert.match(csv, /"Päivämäärä","Projekti","Kuvaus","Minuutit","Kesto","ECTS"/);
     assert.match(csv, /"'=formula"/);
     assert.equal(createReportFilename("2026-07-01_2026-07-31"), "ajanhallintaveto-raportti-2026-07-01_2026-07-31.csv");
   });

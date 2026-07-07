@@ -9,7 +9,7 @@ const navigation = [
   { href: "/time-entries", label: "Tunnit" },
   { href: "/reports", label: "Raportit" },
   { href: "/profile", label: "Profiili" },
-  { href: "/admin", label: "Yllapito" }
+  { href: "/admin", label: "Ylläpito" }
 ];
 
 export async function Header() {

@@ -17,7 +17,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
       <div>
         <h1 className="text-3xl font-bold">Profiili</h1>
         <p className="mt-3 leading-7 text-[var(--muted)]">
-          Hallitse nakyvaa nimeasi. Sahkoposti ja rooli eivat ole muokattavissa
+          Hallitse näkyvää nimeäsi. Sähköposti ja rooli eivät ole muokattavissa
           talla lomakkeella.
         </p>
       </div>
@@ -27,7 +27,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
           <div className="grid gap-5 sm:grid-cols-2">
             <div className="flex flex-col gap-2">
               <label className="text-sm font-semibold" htmlFor="email">
-                Sahkoposti
+                Sähköposti
               </label>
               <input
                 className="min-h-11 rounded-md border border-[var(--border)] bg-[#f4f6fa] px-3 py-2 text-[var(--muted)]"

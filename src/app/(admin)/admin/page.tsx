@@ -27,18 +27,18 @@ export default async function AdminPage() {
     <section className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-12">
       <div>
         <p className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">
-          Yllapito
+          Ylläpito
         </p>
-        <h1 className="mt-2 text-3xl font-bold">Yllapitajan koonti</h1>
+        <h1 className="mt-2 text-3xl font-bold">Ylläpitäjän koonti</h1>
         <p className="mt-3 max-w-3xl leading-7 text-[var(--muted)]">
-          Lue perustietoja kayttajista ja projekteista tukitilanteita varten.
-          Tassa nakymassa ei muokata muiden kayttajien tunteja.
+          Lue perustietoja käyttäjistä ja projekteista tukitilanteita varten.
+          Tässä näkymässä ei muokata muiden käyttäjien tunteja.
         </p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
         <div className="rounded-lg border border-[var(--border)] bg-[var(--panel)] p-5 shadow-sm">
-          <p className="text-sm text-[var(--muted)]">Kayttajia</p>
+          <p className="text-sm text-[var(--muted)]">Käyttäjiä</p>
           <p className="mt-2 text-3xl font-bold">{data.userCount}</p>
         </div>
         <div className="rounded-lg border border-[var(--border)] bg-[var(--panel)] p-5 shadow-sm">
@@ -59,9 +59,9 @@ export default async function AdminPage() {
         <section className="rounded-lg border border-[var(--border)] bg-[var(--panel)] p-6 shadow-sm">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="text-xl font-semibold">Kayttajat</h2>
+              <h2 className="text-xl font-semibold">Käyttäjät</h2>
               <p className="text-sm text-[var(--muted)]">
-                Viimeisimmat profiilit. Salasanoja tai tunnisteita ei nayteta.
+                Viimeisimmat profiilit. Salasanoja tai tunnisteita ei näytetä.
               </p>
             </div>
           </div>
@@ -72,7 +72,7 @@ export default async function AdminPage() {
                 <thead className="border-b border-[var(--border)] text-[var(--muted)]">
                   <tr>
                     <th className="py-3 pr-4 font-semibold">Nimi</th>
-                    <th className="py-3 pr-4 font-semibold">Sahkoposti</th>
+                    <th className="py-3 pr-4 font-semibold">Sähköposti</th>
                     <th className="py-3 pr-4 font-semibold">Rooli</th>
                     <th className="py-3 font-semibold">Luotu</th>
                   </tr>
@@ -85,7 +85,7 @@ export default async function AdminPage() {
                       </td>
                       <td className="py-3 pr-4">{item.email}</td>
                       <td className="py-3 pr-4">
-                        {item.role === "admin" ? "Yllapitaja" : "Kayttaja"}
+                        {item.role === "admin" ? "Ylläpitäjä" : "Käyttäjä"}
                       </td>
                       <td className="py-3">{formatDate(item.created_at)}</td>
                     </tr>
@@ -95,7 +95,7 @@ export default async function AdminPage() {
             </div>
           ) : (
             <p className="mt-5 rounded-md border border-dashed border-[var(--border)] p-4 text-sm text-[var(--muted)]">
-              Kayttajia ei loytynyt.
+              Käyttäjiä ei löytynyt.
             </p>
           )}
         </section>
@@ -105,7 +105,7 @@ export default async function AdminPage() {
             <div>
               <h2 className="text-xl font-semibold">Projektit</h2>
               <p className="text-sm text-[var(--muted)]">
-                {totalProjectCount} projektia yhteensa. Avaa projekti
+                {totalProjectCount} projektia yhteensä. Avaa projekti
                 tarkempaa tarkastelua varten.
               </p>
             </div>
@@ -122,7 +122,7 @@ export default async function AdminPage() {
                     <th className="py-3 pr-4 font-semibold">Projekti</th>
                     <th className="py-3 pr-4 font-semibold">Omistaja</th>
                     <th className="py-3 pr-4 font-semibold">Tila</th>
-                    <th className="py-3 pr-4 font-semibold">Jasenia</th>
+                    <th className="py-3 pr-4 font-semibold">Jäseniä</th>
                     <th className="py-3 pr-4 font-semibold">Luotu</th>
                     <th className="py-3 font-semibold">Linkki</th>
                   </tr>
@@ -161,7 +161,7 @@ export default async function AdminPage() {
             </div>
           ) : (
             <p className="mt-5 rounded-md border border-dashed border-[var(--border)] p-4 text-sm text-[var(--muted)]">
-              Projekteja ei ole viela.
+              Projekteja ei ole vielä.
             </p>
           )}
         </section>
@@ -170,13 +170,13 @@ export default async function AdminPage() {
       <section className="rounded-lg border border-[var(--border)] bg-[#f4f6fa] p-5 text-sm leading-6 text-[var(--muted)]">
         <h2 className="font-semibold text-[var(--foreground)]">Rajaukset</h2>
         <p className="mt-2">
-          Yllapitajan nakyma kayttaa samaa palvelinpuolen Supabase-istuntoa ja
-          tietokannan RLS-saantoja kuin muu sovellus. Palvelurooliavainta ei
-          kayteta, eika tassa nakymassa ole toimintoja muiden kayttajien
+          Ylläpitäjän näkymä käyttää samaa palvelinpuolen Supabase-istuntoa ja
+          tietokannan RLS-sääntöjä kuin muu sovellus. Palvelurooliavainta ei
+          käytetä, eikä tässä näkymässä ole toimintoja muiden käyttäjien
           aikamerkintojen muokkaamiseen.
         </p>
         <p className="mt-2">
-          Aikamerkintojen luku on merkintojen maara, ei tuntisumma.
+          Aikamerkintojen luku on merkintojen määrä, ei tuntisumma.
         </p>
       </section>
     </section>

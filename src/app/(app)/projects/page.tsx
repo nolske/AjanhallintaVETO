@@ -13,7 +13,7 @@ function EmptyState({ archived }: { archived?: boolean }) {
     <div className="rounded-lg border border-dashed border-[var(--border)] bg-[var(--panel)] p-6 text-[var(--muted)]">
       {archived
         ? "Arkistoituja projekteja ei ole."
-        : "Aktiivisia projekteja ei viela ole. Luo ensimmainen projekti."}
+        : "Aktiivisia projekteja ei vielä ole. Luo ensimmainen projekti."}
     </div>
   );
 }
@@ -31,8 +31,8 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
         <div>
           <h1 className="text-3xl font-bold">Projektit</h1>
           <p className="mt-3 max-w-3xl leading-7 text-[var(--muted)]">
-            Naet vain projektit, joissa olet jasenena. Aktiiviset ja arkistoidut
-            projektit pidetaan erillaan.
+            Näet vain projektit, joissa olet jäsenenä. Aktiiviset ja arkistoidut
+            projektit pidetään erillään.
           </p>
         </div>
         <Link

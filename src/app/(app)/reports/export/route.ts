@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   if (error || !user) {
-    return new NextResponse("Kirjaudu sisaan jatkaaksesi.", { status: 401 });
+    return new NextResponse("Kirjaudu sisään jatkaaksesi.", { status: 401 });
   }
 
   const params = Object.fromEntries(request.nextUrl.searchParams.entries());

@@ -21,7 +21,7 @@ export default async function TimeEntriesPage({ searchParams }: TimeEntriesPageP
         <div>
           <h1 className="text-3xl font-bold">Omat tuntikirjaukset</h1>
           <p className="mt-3 max-w-3xl leading-7 text-[var(--muted)]">
-            Naet ja hallitset vain omia kirjauksiasi. Projektin omistaja voi
+            Näet ja hallitset vain omia kirjauksiasi. Projektin omistaja voi
             tarkastella projektinsa kokonaiskirjauksia projektin sivulla.
           </p>
         </div>
@@ -35,7 +35,7 @@ export default async function TimeEntriesPage({ searchParams }: TimeEntriesPageP
       <AuthMessage error={params.error} status={params.status} />
       <TimeEntryList
         currentUserId={user.id}
-        emptyText="Tuntikirjauksia ei viela ole."
+        emptyText="Tuntikirjauksia ei vielä ole."
         entries={entries}
         next={next}
         showProject

@@ -15,9 +15,9 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
   return (
     <AuthCard
       title="Luo tili"
-      description="Rekisteroidy sahkopostilla. Saat vahvistuslinkin ennen kuin tili on kaytossa."
+      description="Rekisteroidy sähköpostilla. Saat vahvistuslinkin ennen kuin tili on käytössä."
       footerHref="/login"
-      footerLabel="Onko sinulla jo tili? Kirjaudu sisaan."
+      footerLabel="Onko sinulla jo tili? Kirjaudu sisään."
     >
       <form action={registerAction} className="flex flex-col gap-5">
         <AuthMessage error={params.error} status={params.status} />
@@ -38,7 +38,7 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
         </div>
         <div className="flex flex-col gap-2">
           <label className="text-sm font-semibold" htmlFor="email">
-            Sahkoposti
+            Sähköposti
           </label>
           <input
             autoComplete="email"

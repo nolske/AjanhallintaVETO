@@ -37,7 +37,7 @@ export default async function EditTimeEntryPage({
         </Link>
         <h1 className="mt-4 text-3xl font-bold">Muokkaa tuntikirjausta</h1>
         <p className="mt-3 leading-7 text-[var(--muted)]">
-          Voit muokata vain omia kirjauksiasi. Kayttajatunnusta ei voi vaihtaa.
+          Voit muokata vain omia kirjauksiasi. Käyttäjätunnusta ei voi vaihtaa.
         </p>
       </div>
       <AuthMessage error={query.error} status={query.status} />

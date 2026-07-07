@@ -4,19 +4,19 @@ export const emailSchema = z
   .string()
   .trim()
   .toLowerCase()
-  .email("Anna kelvollinen sahkopostiosoite.")
-  .max(320, "Sahkopostiosoite on liian pitka.");
+  .email("Anna kelvollinen sähköpostiosoite.")
+  .max(320, "Sähköpostiosoite on liian pitkä.");
 
 export const passwordSchema = z
   .string()
-  .min(8, "Salasanan on oltava vahintaan 8 merkkia.")
-  .max(128, "Salasana on liian pitka.");
+  .min(8, "Salasanan on oltava vähintään 8 merkkiä.")
+  .max(128, "Salasana on liian pitkä.");
 
 export const displayNameSchema = z
   .string()
   .trim()
-  .min(2, "Nimen on oltava vahintaan 2 merkkia.")
-  .max(100, "Nimi on liian pitka.");
+  .min(2, "Nimen on oltava vähintään 2 merkkiä.")
+  .max(100, "Nimi on liian pitkä.");
 
 export const loginSchema = z.object({
   email: emailSchema,
@@ -32,7 +32,7 @@ export const registerSchema = z
     confirmPassword: z.string()
   })
   .refine((value) => value.password === value.confirmPassword, {
-    message: "Salasanat eivat tasmaa.",
+    message: "Salasanat eivät täsmää.",
     path: ["confirmPassword"]
   });
 
@@ -46,7 +46,7 @@ export const resetPasswordSchema = z
     confirmPassword: z.string()
   })
   .refine((value) => value.password === value.confirmPassword, {
-    message: "Salasanat eivat tasmaa.",
+    message: "Salasanat eivät täsmää.",
     path: ["confirmPassword"]
   });
 

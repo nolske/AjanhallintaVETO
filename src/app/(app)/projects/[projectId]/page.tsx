@@ -50,7 +50,7 @@ export default async function ProjectDetailPage({
       <div className="grid gap-4 md:grid-cols-4">
         <Metric label="Omat tunnit" minutes={project.current_user_minutes} />
         <Metric label="Omat ECTS" value={`${formatEcts(project.current_user_minutes)} ECTS`} />
-        <Metric label="Jasenia" value={String(project.member_count)} />
+        <Metric label="Jäseniä" value={String(project.member_count)} />
         <Metric
           label="Projektin tunnit"
           value={
@@ -63,7 +63,7 @@ export default async function ProjectDetailPage({
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <div className="flex flex-col gap-6">
           <div className="rounded-lg border border-[var(--border)] bg-[var(--panel)] p-6 shadow-sm">
-            <h2 className="text-xl font-semibold">Jasenet</h2>
+            <h2 className="text-xl font-semibold">Jäsenet</h2>
             <ul className="mt-4 divide-y divide-[var(--border)]">
               {members.map((member) => (
                 <li className="flex items-center justify-between gap-4 py-3" key={member.user_id}>
@@ -72,7 +72,7 @@ export default async function ProjectDetailPage({
                     <p className="text-sm text-[var(--muted)]">{member.email}</p>
                   </div>
                   <span className="text-sm font-semibold text-[var(--muted)]">
-                    {member.role === "owner" ? "Omistaja" : "Jasen"}
+                    {member.role === "owner" ? "Omistaja" : "Jäsen"}
                   </span>
                 </li>
               ))}
@@ -82,10 +82,10 @@ export default async function ProjectDetailPage({
             <h2 className="text-xl font-semibold">Projektin kirjaukset</h2>
             <TimeEntryList
               currentUserId={user.id}
-              emptyText="Projektissa ei ole viela nakyvissa olevia tuntikirjauksia."
+              emptyText="Projektissa ei ole vielä näkyvissä olevia tuntikirjauksia."
               entries={entries}
               next={`/projects/${projectId}`}
-              showUser={isOwner}
+              showUser
             />
           </div>
         </div>
@@ -94,13 +94,13 @@ export default async function ProjectDetailPage({
             className="inline-flex min-h-11 items-center justify-center rounded-md border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm font-semibold transition hover:border-[var(--accent)]"
             href={`/time-entries/new?projectId=${project.project_id}`}
           >
-            Lisaa tuntikirjaus
+            Lisää tuntikirjaus
           </Link>
           <Link
             className="inline-flex min-h-11 items-center justify-center rounded-md border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm font-semibold transition hover:border-[var(--accent)]"
             href={`/time-entries?projectId=${project.project_id}`}
           >
-            Nayta kirjaukset
+            Näytä kirjaukset
           </Link>
           {isOwner ? (
             <>
@@ -114,7 +114,7 @@ export default async function ProjectDetailPage({
                 className="primary-button inline-flex min-h-11 items-center justify-center rounded-md px-4 py-3 text-sm font-semibold transition"
                 href={`/projects/${project.project_id}/members`}
               >
-                Hallitse jasenia
+                Hallitse jäseniä
               </Link>
             </>
           ) : null}

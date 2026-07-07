@@ -20,7 +20,7 @@ export function ProjectCard({ project }: { project: ProjectSummary }) {
           </p>
         </div>
         <span className="w-fit rounded-md border border-[var(--border)] px-3 py-1 text-xs font-semibold uppercase text-[var(--muted)]">
-          {project.user_role === "owner" ? "Omistaja" : "Jasen"}
+          {project.user_role === "owner" ? "Omistaja" : "Jäsen"}
         </span>
       </div>
       <dl className="mt-5 grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
@@ -31,7 +31,7 @@ export function ProjectCard({ project }: { project: ProjectSummary }) {
           </dd>
         </div>
         <div>
-          <dt className="font-semibold">Jasenia</dt>
+          <dt className="font-semibold">Jäseniä</dt>
           <dd className="mt-1 text-[var(--muted)]">{project.member_count}</dd>
         </div>
         <div>

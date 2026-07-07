@@ -63,14 +63,14 @@ export function TimeEntryForm({
         {selectedProjectIsArchived ? (
           <p className="text-sm text-[var(--muted)]">
             Arkistoidun projektin olemassa olevaa kirjausta voi muokata, mutta
-            uusia kirjauksia ei voi lisata arkistoituun projektiin.
+            uusia kirjauksia ei voi lisätä arkistoituun projektiin.
           </p>
         ) : null}
       </div>
       <div className="grid gap-5 sm:grid-cols-3">
         <div className="flex flex-col gap-2">
           <label className="text-sm font-semibold" htmlFor="entryDate">
-            Paivamaara
+            Päivämäärä
           </label>
           <input
             className="min-h-11 rounded-md border border-[var(--border)] bg-white px-3 py-2"
