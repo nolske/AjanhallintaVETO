@@ -23,17 +23,17 @@ Implemented so far:
 - Time-entry creation, listing, editing, deletion
 - Project-specific time-entry lists
 - Personal time-entry list
-- ECTS calculation utilities
-- Unit tests for validation, duration conversion, ECTS, and simple authorization helpers
+- opintopistelaskenta utilities
+- Unit tests for validation, duration conversion, opintopisteet, and simple authorization helpers
 
 User-facing UI text is Finnish. Source code identifiers and docs are mostly English.
 
 ## Important Project Rules
 
 - Time durations are stored as integer minutes.
-- 27 hours equals 1 ECTS credit.
-- One ECTS credit equals 1,620 minutes.
-- ECTS values are calculated, not stored in the database.
+- 27 hours equals 1 opintopiste.
+- One opintopiste equals 1,620 minutes.
+- opintopisteet are calculated, not stored in the database.
 - Users can modify only their own time entries.
 - Project membership is required before a user can create an entry for a project.
 - Project owners manage project members.
@@ -217,8 +217,8 @@ Implemented behavior:
 Display behavior:
 
 - `90` minutes displays as `1 h 30 min`.
-- ECTS is calculated with `totalMinutes / 1620`.
-- ECTS is not stored.
+- opintopisteet lasketaan with `totalMinutes / 1620`.
+- opintopisteitä ei tallenneta.
 
 ## Important Files
 
@@ -302,7 +302,7 @@ Build:
 - Date-range filter
 - Project filter
 - Personal total minutes
-- Personal ECTS total
+- Henkilökohtaiset opintopisteet yhteensä
 - CSV export for the authenticated user's own report
 
 Security requirements:
@@ -310,7 +310,7 @@ Security requirements:
 - Reports must show only the authenticated user's own entries.
 - Project owners seeing project-wide entries is fine in project detail, but personal reports should stay personal unless a separate owner report is intentionally added.
 - CSV export must not leak other users' entries.
-- ECTS must be calculated, not stored.
+- opintopisteet must be calculated, not stored.
 
 Suggested implementation files:
 

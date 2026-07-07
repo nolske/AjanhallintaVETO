@@ -19,7 +19,7 @@ export function escapeCsvCell(value: string | number | null | undefined) {
 
 export function buildReportCsv(entries: ReportEntry[]) {
   const rows = [
-    ["Päivämäärä", "Projekti", "Kuvaus", "Minuutit", "Kesto", "ECTS"],
+    ["Päivämäärä", "Projekti", "Kuvaus", "Minuutit", "Kesto", "Opintopisteet"],
     ...entries.map((entry) => [
       entry.entry_date,
       entry.project_name,

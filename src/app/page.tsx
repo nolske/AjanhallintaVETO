@@ -4,7 +4,7 @@ import { ECTS_MINUTES, minutesToEcts } from "@/lib/calculations/ects";
 const highlights = [
   "Kirjaa opiskeluprojektien aika kokonaisina minuutteina.",
   "Jaa projektit rekisteröityjen jäsenten kanssa.",
-  "Raportoi tunnit ja lasketut ECTS-pisteet.",
+  "Raportoi tunnit ja lasketut opintopisteet.",
   "Pidä oikeudet Supabase RLS -sääntöjen takana."
 ];
 
@@ -20,7 +20,7 @@ export default function HomePage() {
         </h1>
         <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
           Selkeä verkkosovellus opiskeluprojektien tuntien kirjaamiseen,
-          projektijäsenten hallintaan ja ECTS-pisteiden laskemiseen kirjatuista
+          projektijäsenten hallintaan ja opintopisteiden laskemiseen kirjatuista
           minuuteista.
         </p>
       </div>
@@ -39,10 +39,10 @@ export default function HomePage() {
       </div>
 
       <div className="rounded-lg border border-[var(--border)] bg-[var(--panel)] p-6 shadow-sm">
-        <h2 className="text-xl font-semibold">ECTS-laskenta</h2>
+        <h2 className="text-xl font-semibold">Opintopistelaskenta</h2>
         <p className="mt-3 text-[var(--muted)]">
-          Yksi ECTS-piste on {ECTS_MINUTES.toLocaleString("fi-FI")} minuuttia.
-          Esimerkiksi 810 minuuttia on {minutesToEcts(810)} ECTS-pistetta.
+          Yksi opintopiste on {ECTS_MINUTES.toLocaleString("fi-FI")} minuuttia.
+          Esimerkiksi 810 minuuttia on {minutesToEcts(810)} opintopistettä.
         </p>
       </div>
 

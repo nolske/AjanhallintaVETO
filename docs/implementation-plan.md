@@ -88,13 +88,13 @@ Likely files created or modified: report page, CSV route handler, report queries
 
 Database work: indexes or views for efficient user/project/date reporting.
 
-Validation and security work: RLS and server queries limit reports to the authenticated user; ECTS is calculated, not stored.
+Validation and security work: RLS and server queries limit reports to the authenticated user; opintopisteet lasketaan, not stored.
 
 Commands and tests: `npm run lint`, `npm run typecheck`, `npm run build`.
 
-Acceptance criteria: users can filter by date range and project, see total minutes and ECTS, and export only their own report.
+Acceptance criteria: users can filter by date range and project, see total minutes and opintopisteet, and export only their own report.
 
-Risks or decisions: choose ECTS display precision.
+Risks or decisions: choose opintopisteiden näyttötarkkuus.
 
 ## Phase 7: Basic Admin Role
 

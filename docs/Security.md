@@ -334,7 +334,7 @@ Purpose:
 - Authentication
 - Project collaboration
 - Study-hour reporting
-- ECTS calculation
+- opintopistelaskenta
 - Support/admin oversight
 
 Who can view data:
@@ -383,7 +383,7 @@ Privacy notice should document:
 - Project membership is required before time-entry creation.
 - Users can update/delete only their own time entries.
 - Time duration is stored as integer minutes.
-- ECTS values are calculated, not stored.
+- opintopisteet are calculated, not stored.
 - Service-role key is not present in browser code.
 - `.env.local` is ignored by Git.
 - User-controlled input is validated with Zod in main forms.

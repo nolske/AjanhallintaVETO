@@ -52,17 +52,17 @@ Stores study work durations.
 - `description`: optional, max 500 characters
 - `created_at`, `updated_at`: timestamps
 
-ECTS credits are calculated from `duration_minutes`. They are not stored.
+opintopisteet are calculated from `duration_minutes`. They are not stored.
 
 ## Relationships
 
 ```mermaid
 erDiagram
   AUTH_USERS ||--|| PROFILES : "has app profile"
-  PROFILES ||--o{ PROJECTS : "owns"
-  PROJECTS ||--o{ PROJECT_MEMBERS : "has members"
+  PROFILES ||--o{ PROJopintopisteet : "owns"
+  PROJopintopisteet ||--o{ PROJECT_MEMBERS : "has members"
   PROFILES ||--o{ PROJECT_MEMBERS : "joins"
-  PROJECTS ||--o{ TIME_ENTRIES : "contains"
+  PROJopintopisteet ||--o{ TIME_ENTRIES : "contains"
   PROFILES ||--o{ TIME_ENTRIES : "logs"
 
   AUTH_USERS {
@@ -79,7 +79,7 @@ erDiagram
     timestamptz updated_at
   }
 
-  PROJECTS {
+  PROJopintopisteet {
     uuid id PK
     text name
     text description

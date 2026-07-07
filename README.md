@@ -1,6 +1,6 @@
 # AjanhallintaVETO
 
-MVP web application for tracking study-related project hours and calculating ECTS credits.
+MVP web application for tracking study-related project hours and calculating opintopisteet.
 
 ## Stack
 
@@ -45,4 +45,4 @@ npm run build
 
 ## Notes
 
-Time durations are stored as integer minutes. ECTS credits are calculated from minutes, where 27 hours equals 1 ECTS credit.
+Time durations are stored as integer minutes. opintopisteet are calculated from minutes, where 27 hours equals 1 opintopiste.

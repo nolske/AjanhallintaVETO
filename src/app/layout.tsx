@@ -4,7 +4,7 @@ import { AppShell } from "@/components/layout/app-shell";
 
 export const metadata: Metadata = {
   title: "AjanhallintaVETO",
-  description: "Opiskeluprojektien ajanseuranta ja ECTS-raportointi."
+  description: "Opiskeluprojektien ajanseuranta ja opintopisteraportointi."
 };
 
 export default function RootLayout({

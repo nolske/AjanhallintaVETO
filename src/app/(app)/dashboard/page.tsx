@@ -35,7 +35,7 @@ export default async function DashboardPage() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Metric title="Minuutit yhteensä" value={String(summary.totalMinutes)} />
         <Metric title="Tunnit yhteensä" value={summary.formattedHours} />
-        <Metric title="ECTS yhteensä" value={`${summary.ects} ECTS`} />
+        <Metric title="Opintopisteet yhteensä" value={summary.ects} />
         <Metric title="Tässä kuussa" value={formatDuration(currentMonthMinutes)} />
       </div>
       <div className="flex flex-wrap gap-3">
@@ -72,7 +72,7 @@ export default async function DashboardPage() {
                   </Link>
                   <p className="mt-1 text-sm text-[var(--muted)]">
                     Oma aika {formatDuration(project.current_user_minutes)},{" "}
-                    {formatEcts(project.current_user_minutes)} ECTS
+                    {formatEcts(project.current_user_minutes)} opintopistettä
                   </p>
                 </li>
               ))}
@@ -99,7 +99,7 @@ export default async function DashboardPage() {
                   </p>
                   <p className="mt-1 text-sm text-[var(--muted)]">
                     {formatDuration(entry.duration_minutes)} /{" "}
-                    {formatEcts(entry.duration_minutes)} ECTS
+                    {formatEcts(entry.duration_minutes)} opintopistettä
                   </p>
                 </li>
               ))}
@@ -136,7 +136,7 @@ export default async function DashboardPage() {
         >
           <h2 className="font-semibold">Raportit</h2>
           <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
-            Tarkastele tunteja ja laskettuja ECTS-pisteita.
+            Tarkastele tunteja ja laskettuja opintopisteitä.
           </p>
         </Link>
       </div>

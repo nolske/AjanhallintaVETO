@@ -72,7 +72,7 @@ export function TimeEntryList({
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-semibold">ECTS</dt>
+                  <dt className="font-semibold">Opintopisteet</dt>
                   <dd className="mt-1 text-[var(--muted)]">
                     {formatEcts(entry.duration_minutes)}
                   </dd>

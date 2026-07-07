@@ -33,7 +33,7 @@ export default async function ReportsPage({ searchParams }: ReportsPageProps) {
         <div>
           <h1 className="text-3xl font-bold">Raportit</h1>
           <p className="mt-3 max-w-3xl leading-7 text-[var(--muted)]">
-            Raportti näyttää vain omat tuntikirjauksesi. ECTS lasketaan
+            Raportti näyttää vain omat tuntikirjauksesi. Opintopisteet lasketaan
             yhteenlasketuista minuuteista.
           </p>
         </div>
@@ -125,7 +125,7 @@ export default async function ReportsPage({ searchParams }: ReportsPageProps) {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Metric title="Minuutit" value={String(summary.totalMinutes)} />
         <Metric title="Tunnit" value={summary.formattedHours} />
-        <Metric title="ECTS" value={`${summary.ects} ECTS`} />
+        <Metric title="Opintopisteet" value={summary.ects} />
         <Metric title="Kirjauksia" value={String(summary.entryCount)} />
       </div>
       <section className="flex flex-col gap-4">
@@ -136,7 +136,7 @@ export default async function ReportsPage({ searchParams }: ReportsPageProps) {
               <span>Projekti</span>
               <span>Minuutit</span>
               <span>Tunnit</span>
-              <span>ECTS</span>
+              <span>Opintopisteet</span>
               <span>Kirjauksia</span>
             </div>
             <ul className="divide-y divide-[var(--border)]">
@@ -185,7 +185,7 @@ export default async function ReportsPage({ searchParams }: ReportsPageProps) {
                       <dd>{formatDuration(entry.duration_minutes)}</dd>
                     </div>
                     <div>
-                      <dt className="font-semibold">ECTS</dt>
+                      <dt className="font-semibold">Opintopisteet</dt>
                       <dd>{formatEcts(entry.duration_minutes)}</dd>
                     </div>
                   </dl>

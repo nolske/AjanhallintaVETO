@@ -49,7 +49,7 @@ export default async function ProjectDetailPage({
       <AuthMessage error={query.error} status={query.status} />
       <div className="grid gap-4 md:grid-cols-4">
         <Metric label="Omat tunnit" minutes={project.current_user_minutes} />
-        <Metric label="Omat ECTS" value={`${formatEcts(project.current_user_minutes)} ECTS`} />
+        <Metric label="Omat opintopisteet" value={formatEcts(project.current_user_minutes)} />
         <Metric label="Jäseniä" value={String(project.member_count)} />
         <Metric
           label="Projektin tunnit"

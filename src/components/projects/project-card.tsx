@@ -37,7 +37,7 @@ export function ProjectCard({ project }: { project: ProjectSummary }) {
         <div>
           <dt className="font-semibold">Omat tunnit</dt>
           <dd className="mt-1 text-[var(--muted)]">
-            {formatMinutesAsHours(ownMinutes)} / {formatEcts(ownMinutes)} ECTS
+            {formatMinutesAsHours(ownMinutes)} / {formatEcts(ownMinutes)} opintopistettä
           </dd>
         </div>
         <div>
@@ -45,7 +45,7 @@ export function ProjectCard({ project }: { project: ProjectSummary }) {
           <dd className="mt-1 text-[var(--muted)]">
             {totalMinutes === null
               ? "Vain omistajalle"
-              : `${formatMinutesAsHours(totalMinutes)} / ${formatEcts(totalMinutes)} ECTS`}
+              : `${formatMinutesAsHours(totalMinutes)} / ${formatEcts(totalMinutes)} opintopistettä`}
           </dd>
         </div>
       </dl>
