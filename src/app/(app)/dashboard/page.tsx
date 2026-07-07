@@ -40,13 +40,13 @@ export default async function DashboardPage() {
       </div>
       <div className="flex flex-wrap gap-3">
         <Link
-          className="inline-flex min-h-11 items-center justify-center rounded-md bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)]"
+          className="primary-button inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-sm font-semibold transition"
           href="/projects/new"
         >
           Luo projekti
         </Link>
         <Link
-          className="inline-flex min-h-11 items-center justify-center rounded-md bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)]"
+          className="primary-button inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-sm font-semibold transition"
           href="/time-entries/new"
         >
           Lisaa tuntikirjaus

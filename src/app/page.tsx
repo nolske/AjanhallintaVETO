@@ -48,7 +48,7 @@ export default function HomePage() {
 
       <div>
         <Link
-          className="inline-flex min-h-11 items-center justify-center rounded-md bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)]"
+          className="primary-button inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-sm font-semibold transition"
           href="/dashboard"
         >
           Siirry koontiin

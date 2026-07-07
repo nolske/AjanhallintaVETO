@@ -8,6 +8,8 @@
   --border: #d9deea;
   --accent: #16695e;
   --accent-strong: #0f4f47;
+  --button: #ade713;
+  --button-strong: #9bd00f;
 }
 
 * {
@@ -29,6 +31,15 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.primary-button {
+  background: #ade713;
+  color: var(--foreground);
+}
+
+.primary-button:hover {
+  background: #9bd00f;
 }
 
 a:focus-visible,

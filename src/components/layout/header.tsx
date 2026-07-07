@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { signOutAction } from "@/lib/auth/actions";
 import { canAccessAdminArea } from "@/lib/admin/authz";
 import { getAuthenticatedUser, getCurrentProfile } from "@/lib/auth/server";
+import { HeaderNavigation } from "@/components/layout/header-navigation";
 
 const navigation = [
   { href: "/dashboard", label: "Koonti" },
@@ -32,41 +32,7 @@ export async function Header() {
         >
           AjanhallintaVETO
         </Link>
-        <nav aria-label="Paavalikko">
-          <ul className="flex flex-wrap gap-2">
-            {visibleNavigation.map((item) => (
-              <li key={item.href}>
-                <Link
-                  className="inline-flex min-h-10 items-center rounded-md px-3 py-2 text-sm font-medium text-[var(--muted)] transition hover:bg-[#eef5f3] hover:text-[var(--accent)]"
-                  href={item.href}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            {user ? (
-              <li>
-                <form action={signOutAction}>
-                  <button
-                    className="inline-flex min-h-10 items-center rounded-md px-3 py-2 text-sm font-medium text-[var(--muted)] transition hover:bg-[#eef5f3] hover:text-[var(--accent)]"
-                    type="submit"
-                  >
-                    Kirjaudu ulos
-                  </button>
-                </form>
-              </li>
-            ) : (
-              <li>
-                <Link
-                  className="inline-flex min-h-10 items-center rounded-md px-3 py-2 text-sm font-medium text-[var(--muted)] transition hover:bg-[#eef5f3] hover:text-[var(--accent)]"
-                  href="/login"
-                >
-                  Kirjaudu
-                </Link>
-              </li>
-            )}
-          </ul>
-        </nav>
+        <HeaderNavigation items={visibleNavigation} isSignedIn={Boolean(user)} />
       </div>
     </header>
   );

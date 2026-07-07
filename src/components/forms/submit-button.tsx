@@ -12,7 +12,7 @@ export function SubmitButton({ children, pendingText }: SubmitButtonProps) {
 
   return (
     <button
-      className="inline-flex min-h-11 w-full items-center justify-center rounded-md bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+      className="primary-button inline-flex min-h-11 w-full items-center justify-center rounded-md px-5 py-3 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
       disabled={pending}
       type="submit"
     >
